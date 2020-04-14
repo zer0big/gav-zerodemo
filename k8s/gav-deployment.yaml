@@ -1,33 +1,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: zerok8sdemo
+  name: zeroaksdemo
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
-      app: zero-k8s-app
+      app: zero-aks-app
   template:
     metadata:
       labels:
-        app: zero-k8s-app
+        app: zero-aks-app
     spec:
       containers:
-        - name: zero-k8s-demo
-          image: zeroacrdemo.azurecr.io/gab-zerodemo:latest
+        - name: zero-aks-demo
+          image: zeroacrdemo.azurecr.io/gav-zerodemo:latest
           ports:
             - containerPort: 80
 ---
 apiVersion: v1
 kind: Service
 metadata:
-    name: zero-k8s-app
+    name: zero-aks-app
 spec:
   ports:
     - name: http-port
       port: 80
       targetPort: 80
   selector:
-    app: zero-k8s-app
+    app: zero-aks-app
   type: LoadBalancer
 
