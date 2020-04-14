@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zerok8sdemo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zero-k8s-app
+  template:
+    metadata:
+      labels:
+        app: zero-k8s-app
+    spec:
+      containers:
+        - name: zero-k8s-demo
+          image: zeroacrdemo.azurecr.io/gab-zerodemo:latest
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: zero-k8s-app
+spec:
+  ports:
+    - name: http-port
+      port: 80
+      targetPort: 80
+  selector:
+    app: zero-k8s-app
+  type: LoadBalancer
+
