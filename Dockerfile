@@ -1,4 +1,4 @@
-# 런타임 전용 기본 이미지를 지정하여 단계를 시작하고 참조를 위해 base로명명
+# 런타임 전용 기본 이미지를 지정하여 단계를 시작하고 참조를 위해 base로 명명
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.0-buster-slim AS base
 
 # 이미지에 작업디렉토리 /app  생성
